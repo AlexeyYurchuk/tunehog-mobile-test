@@ -1,7 +1,7 @@
 package utils;
 
 /**
- * Created by admin on 20.05.14.
+ * Created by a.tykhonov on 20.05.14.
  */
 public class WaitUtils {
 
@@ -16,6 +16,5 @@ public class WaitUtils {
             throw new RuntimeException(e);
         }
     }
-
 
 }

@@ -2,6 +2,7 @@ package helpers.start.page;
 
 import framework.Loggable;
 import helpers.BasePage;
+import helpers.login.pages.SignInPage;
 import helpers.start.data.StartPageDataProviders;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,8 +19,9 @@ public class StartPage extends BasePage implements StartPageDataProviders, Logga
     @FindBy(how = How.NAME, using = StartPageDataProviders.TryNowName)
     private WebElement tryNowButton;
 
-    public void clickLogin() {
+    public SignInPage clickLogin() {
         LOG_STEP.info("User clicks on 'Login' button");
         loginButton.click();
+        return new SignInPage();
     }
 }
