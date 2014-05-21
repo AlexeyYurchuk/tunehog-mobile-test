@@ -27,7 +27,6 @@ public class LoginTests extends BaseTest implements Loggable {
         LOG_EXPECTED_RESULT.info("User logs into the system, then log out");
         signInPage = startPage.clickLogin();
         signInPage.signIn(defaultUser);
-        //startPage.clickLogin();
     }
 
 }
