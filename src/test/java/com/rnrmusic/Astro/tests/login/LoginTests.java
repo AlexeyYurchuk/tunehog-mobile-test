@@ -1,5 +1,6 @@
 package com.rnrmusic.Astro.tests.login;
 
+import framework.dataobjects.UserObject;
 import helpers.BaseTest;
 import helpers.login.pages.SignInPage;
 import helpers.start.page.StartPage;
@@ -13,6 +14,7 @@ public class LoginTests extends BaseTest implements Loggable {
 
     private StartPage startPage;
     private SignInPage signInPage;
+
 
     @BeforeMethod
     public void setUp() {

@@ -14,14 +14,14 @@ public class BaseTest implements Loggable {
     protected UserObject defaultUser;
 
     @BeforeClass
-    public void setUp() {
+    public void genericSetUp() {
         driver = THMobileDriver.getInstance().getDriver();
         defaultUser = new UserObject();
         defaultUser.setFromProperties();
     }
 
     @AfterClass
-    public void tearDown() throws InterruptedException {
+    public void genericTearDown() throws InterruptedException {
         WaitUtils.waitForResult(3);
         THMobileDriver.getInstance().terminate();
     }
