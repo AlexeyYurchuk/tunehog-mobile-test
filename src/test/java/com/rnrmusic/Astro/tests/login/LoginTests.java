@@ -2,6 +2,7 @@ package com.rnrmusic.Astro.tests.login;
 
 import framework.dataobjects.UserObject;
 import helpers.BaseTest;
+import helpers.choose.page.ChooseSignPage;
 import helpers.login.pages.SignInPage;
 import helpers.start.page.StartPage;
 import org.testng.annotations.BeforeMethod;
@@ -14,11 +15,12 @@ public class LoginTests extends BaseTest implements Loggable {
 
     private StartPage startPage;
     private SignInPage signInPage;
-
+    private ChooseSignPage chooseSignPage;
 
     @BeforeMethod
     public void setUp() {
         startPage = new StartPage();
+        chooseSignPage = new ChooseSignPage();
     }
 
     @Test(priority = 1, enabled = true)
@@ -29,6 +31,7 @@ public class LoginTests extends BaseTest implements Loggable {
         LOG_EXPECTED_RESULT.info("User logs into the system, then log out");
         signInPage = startPage.clickLogin();
         signInPage.signIn(defaultUser);
+        chooseSignPage.checkLoggedInUser();
     }
 
 }
