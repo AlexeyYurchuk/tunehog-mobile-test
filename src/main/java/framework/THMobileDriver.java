@@ -13,7 +13,7 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * Created by admin on 20.05.14.
  */
-public class THMobileDriver {
+public class THMobileDriver implements Loggable {
 
     private AppiumDriver driver;
     private static volatile THMobileDriver instance;
@@ -21,9 +21,11 @@ public class THMobileDriver {
     //constants
     private static final String IOS = "iOS";
     private static final String APPIUM_DEFAULT_URI = "http://127.0.0.1:4723/wd/hub";
+    private static final String V7_1 = "7.1";
 
     // Platform variables
     private String platformName;
+    private String platformVersion;
 
 
     private THMobileDriver() {
@@ -49,14 +51,18 @@ public class THMobileDriver {
     private void initProperties() {
         if ( System.getProperty("test.platformName") == null) {
             System.setProperty("test.platformName", IOS);
+            System.setProperty("test.platformVersion", V7_1);
         }
 
         platformName = System.getProperty("test.platformName");
+        platformVersion = System.getProperty("test.platformVersion");
     }
 
     public AppiumDriver initDriver() {
         String urlString;
         DesiredCapabilities capabilities = new DesiredCapabilities();
+
+        LOG_ENVIRONMENT.info("Platform Name: " + platformName + ", Platform Version: " + platformVersion);
 
         driver = null;
 
@@ -66,8 +72,8 @@ public class THMobileDriver {
             File appDir = new File("/Users/admin/a.tykhonov/wti-astro-ios/Astro/build/Products/Debug-iphonesimulator");
             File app = new File(appDir, "Astro.app");
             capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
-            capabilities.setCapability("platformVersion", "7.1");
-            capabilities.setCapability("platformName", "iOS");
+            capabilities.setCapability("platformVersion", platformVersion);
+            capabilities.setCapability("platformName", platformName);
             capabilities.setCapability("deviceName", "iPhone Simulator");
             capabilities.setCapability("app", app.getAbsolutePath());
         }

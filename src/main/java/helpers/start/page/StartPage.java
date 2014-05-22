@@ -22,7 +22,7 @@ public class StartPage extends BasePage implements StartPageDataProviders, Logga
     public StartPage() {}
 
     public SignInPage clickLogin() {
-        LOG_STEP.info("User clicks on 'Login' button");
+        LOG_STEP.info("User choose 'Login' option");
         loginButton.click();
         return new SignInPage();
     }
