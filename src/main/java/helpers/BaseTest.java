@@ -45,7 +45,7 @@ public class BaseTest implements Loggable {
         Throwable exceptionName = result.getThrowable();
         if (!result.isSuccess()) {
             File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            String path = "target/screenshots/" + "Time_" + formatterTime.format(calendar.getTime()) + "__(Date)_" +
+            String path = "screenshots/" + "Time_" + formatterTime.format(calendar.getTime()) + "__(Date)_" +
                     formatterDate.format(calendar.getTime()) + "__(TestMethod)_" + methodName + "__(TestClass)_" +
                     getClass().getSimpleName() + ".png";
             LOG_ERROR.info("TEST FAILED. PATH TO SCREENSHOT: " + path);
