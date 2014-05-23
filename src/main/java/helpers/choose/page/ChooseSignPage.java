@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
+import utils.WaitUtils;
 
 /**¡
  * Created by admin on 21.05.14.
@@ -15,6 +16,7 @@ public class ChooseSignPage {
     private WebElement something;
 
     public void checkLoggedInUser() {
+        WaitUtils.waitForResult(3);
         Assert.assertTrue(false); //TODO: should be change to real action
     }
 }

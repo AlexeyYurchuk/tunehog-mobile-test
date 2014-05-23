@@ -30,7 +30,6 @@ public class SignInPage extends BasePage implements LoginPagesDataProviders, Log
     }
 
     public void signIn(UserObject user) {
-        clearFields();
         WaitUtils.waitForResult(SLEEP_TIME_IN_SECONDS);
         LOG_STEP.info("User fills email field");
         email.sendKeys(user.getEmail());
