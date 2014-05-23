@@ -23,15 +23,23 @@ public class LoginTests extends BaseTest implements Loggable {
         chooseSignPage = new ChooseSignPage();
     }
 
-    @Test(priority = 1, enabled = true)
+    @Test(priority = 1)
     public void signInSignOutTest() {
         LOG_TEST_SUITE.info("Login Tests");
         LOG_PRECONDITIONS.info("iphone with iOS 7.1");
         LOG_TEST.info("Login and Logout test");
         LOG_EXPECTED_RESULT.info("User logs into the system, then log out");
         signInPage = startPage.clickLogin();
+        signInPage.checkUnLoggedUser();
         signInPage.signIn(defaultUser);
         chooseSignPage.checkLoggedInUser();
+        chooseSignPage.clickLogout();
+        signInPage.checkUnLoggedUser();
     }
 
+    @Test(priority = 2)
+    public void loginThroughFacebook() {
+        LOG_TEST.info("Login with Facebook account");
+        // TODO create real test
+    }
 }

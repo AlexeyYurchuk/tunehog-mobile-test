@@ -1,5 +1,8 @@
 package helpers.choose.page;
 
+import com.sun.xml.internal.bind.v2.TODO;
+import framework.Loggable;
+import helpers.BasePage;
 import helpers.choose.data.ChooseSignPageDataProviders;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,7 +13,7 @@ import utils.WaitUtils;
 /**¡
  * Created by admin on 21.05.14.
  */
-public class ChooseSignPage {
+public class ChooseSignPage extends BasePage implements ChooseSignPageDataProviders, Loggable {
 
     @FindBy(how = How.NAME, using = ChooseSignPageDataProviders.something)
     private WebElement something;
@@ -18,5 +21,10 @@ public class ChooseSignPage {
     public void checkLoggedInUser() {
         WaitUtils.waitForResult(3);
         Assert.assertTrue(false); //TODO: should be change to real action
+    }
+
+    public void clickLogout() {
+        LOG_STEP.info("User clicks on logout button");
+        // TODO: should be changed to real action
     }
 }

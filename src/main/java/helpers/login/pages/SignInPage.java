@@ -3,10 +3,12 @@ package helpers.login.pages;
 import framework.Loggable;
 import framework.dataobjects.UserObject;
 import helpers.BasePage;
+import helpers.choose.page.ChooseSignPage;
 import helpers.login.data.LoginPagesDataProviders;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.testng.Assert;
 import utils.WaitUtils;
 
 /**
@@ -29,7 +31,7 @@ public class SignInPage extends BasePage implements LoginPagesDataProviders, Log
         password.clear();
     }
 
-    public void signIn(UserObject user) {
+    public ChooseSignPage signIn(UserObject user) {
         WaitUtils.waitForResult(SLEEP_TIME_IN_SECONDS);
         LOG_STEP.info("User fills email field");
         email.sendKeys(user.getEmail());
@@ -37,6 +39,13 @@ public class SignInPage extends BasePage implements LoginPagesDataProviders, Log
         password.sendKeys(user.getPassword());
         LOG_STEP.info("User clicks on Login button");
         signinButton.click();
-        WaitUtils.waitForResult(SLEEP_TIME_IN_SECONDS);
+        WaitUtils.waitForResult(5);
+        return new ChooseSignPage();
     }
+
+    public void checkUnLoggedUser() {
+        LOG_STEP.info("System verifies if user is no logged");
+        Assert.assertTrue(email.isDisplayed() && password.isDisplayed());
+    }
+
 }
