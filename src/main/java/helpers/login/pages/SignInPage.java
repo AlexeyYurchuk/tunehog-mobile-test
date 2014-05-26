@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
+import utils.IOSuiUtils;
 import utils.WaitUtils;
 
 /**
@@ -46,6 +47,12 @@ public class SignInPage extends BasePage implements LoginPagesDataProviders, Log
     public void checkUnLoggedUser() {
         LOG_STEP.info("System verifies if user is no logged");
         Assert.assertTrue(email.isDisplayed() && password.isDisplayed());
+    }
+
+    public void initFacebookOptions() {
+        LOG_STEP.info("Setup valid Facebook account in the Settings");
+        LOG_STEP.info("Press home button");
+        IOSuiUtils.clickHomeButton();
     }
 
 }

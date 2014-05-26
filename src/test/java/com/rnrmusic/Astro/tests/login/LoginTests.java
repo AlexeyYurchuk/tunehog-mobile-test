@@ -23,7 +23,7 @@ public class LoginTests extends BaseTest implements Loggable {
         chooseSignPage = new ChooseSignPage();
     }
 
-    @Test(priority = 1)
+    @Test
     public void signInSignOutTest() {
         LOG_TEST_SUITE.info("Login Tests");
         LOG_PRECONDITIONS.info("iphone with iOS 7.1");
@@ -37,9 +37,15 @@ public class LoginTests extends BaseTest implements Loggable {
         signInPage.checkUnLoggedUser();
     }
 
-    @Test(priority = 2)
+    @Test
     public void loginThroughFacebook() {
         LOG_TEST.info("Login with Facebook account");
-        // TODO create real test
+        LOG_EXPECTED_RESULT.info("User is logged into the system with the Facebook account");
+        signInPage = startPage.clickLogin();
+        signInPage.initFacebookOptions();
+        // TODO: implemet signInPage.signInFacebook(defaultUser);
+        chooseSignPage.checkLoggedInUser();
+        chooseSignPage.clickLogout();
     }
+
 }
