@@ -8,6 +8,8 @@ import helpers.start.page.StartPage;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import framework.Loggable;
+import utils.IOSuiUtils;
+
 /**
  * Created by admin on 20.05.14.
  */
@@ -37,13 +39,15 @@ public class LoginTests extends BaseTest implements Loggable {
         signInPage.checkUnLoggedUser();
     }
 
-    @Test
+    // don't forget to run initFacebookOptions() before
+    // TODO: make pure dependency on initFacebookOptions() method
+    @Test()
     public void loginThroughFacebook() {
         LOG_TEST.info("Login with Facebook account");
         LOG_EXPECTED_RESULT.info("User is logged into the system with the Facebook account");
-        signInPage = startPage.clickLogin();
-        signInPage.initFacebookOptions();
+        // TODO: do smth with this method: IOSuiUtils.initFacebookOptions();
         // TODO: implemet signInPage.signInFacebook(defaultUser);
+        // signInPage = startPage.clickLogin();
         chooseSignPage.checkLoggedInUser();
         chooseSignPage.clickLogout();
     }

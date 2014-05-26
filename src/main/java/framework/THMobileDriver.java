@@ -23,9 +23,14 @@ public class THMobileDriver implements Loggable {
     private static final String APPIUM_DEFAULT_URI = "http://127.0.0.1:4723/wd/hub";
     private static final String V7_1 = "7.1";
 
+    private static final String DEFAULT_APP = "Astro.app";
+    private static final String DEFAULT_APP_PATH = "/Users/admin/a.tykhonov/wti-astro-ios/Astro/build/Products/Debug-iphonesimulator";
+
     // Platform variables
     private String platformName;
     private String platformVersion;
+    private String appName;
+    private String appPathName;
 
 
     private THMobileDriver() {
@@ -48,12 +53,19 @@ public class THMobileDriver implements Loggable {
         return instance;
     }
 
-    private void initProperties() {
+    public void initProperties() {
         if ( System.getProperty("test.platformName") == null) {
             System.setProperty("test.platformName", IOS);
             System.setProperty("test.platformVersion", V7_1);
         }
 
+        if (System.getProperty("test.AppName") == null || System.getProperty("test.AppPathName") == null ) {
+            System.setProperty("test.AppName", DEFAULT_APP);
+            System.setProperty("test.AppPathName",DEFAULT_APP_PATH);
+        }
+
+        appPathName = System.getProperty("test.AppPathName");
+        appName = System.getProperty("test.AppName");
         platformName = System.getProperty("test.platformName");
         platformVersion = System.getProperty("test.platformVersion");
     }
@@ -62,6 +74,8 @@ public class THMobileDriver implements Loggable {
         String urlString;
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
+        initProperties();
+
         LOG_ENVIRONMENT.info("Platform Name: " + platformName + ", Platform Version: " + platformVersion);
 
         driver = null;
@@ -69,8 +83,8 @@ public class THMobileDriver implements Loggable {
         urlString = APPIUM_DEFAULT_URI;
 
         if (platformName.equals(IOS)) {
-            File appDir = new File("/Users/admin/a.tykhonov/wti-astro-ios/Astro/build/Products/Debug-iphonesimulator");
-            File app = new File(appDir, "Astro.app");
+            File appDir = new File(appPathName);
+            File app = new File(appDir, appName);
             capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
             capabilities.setCapability("platformVersion", platformVersion);
             capabilities.setCapability("platformName", platformName);

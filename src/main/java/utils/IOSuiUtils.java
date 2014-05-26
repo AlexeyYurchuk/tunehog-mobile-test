@@ -1,6 +1,10 @@
 package utils;
 
 import framework.Loggable;
+import framework.THMobileDriver;
+import helpers.com.randrmusic.ios.system.main.page.MainPage;
+import helpers.com.randrmusic.ios.system.settings.page.SettingsPage;
+import io.appium.java_client.AppiumDriver;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -10,9 +14,13 @@ import java.awt.event.KeyEvent;
  */
 public class IOSuiUtils implements Loggable{
 
-    public static void clickHomeButton() {
+    private static AppiumDriver driver;
+    private static MainPage mainPage;
+    private static SettingsPage settingsPage;
+
+    public static MainPage clickHomeButton() {
         try {
-            Thread.sleep(3000);
+            WaitUtils.sleep(1);
             Robot robot = new Robot();
 
             //Script for setting iPhone Simulator to foreground
@@ -28,11 +36,23 @@ public class IOSuiUtils implements Loggable{
             robot.keyRelease(KeyEvent.VK_H);
             robot.keyRelease(KeyEvent.VK_SHIFT);
             robot.keyRelease(KeyEvent.VK_META);
-            Thread.sleep(6000);
+            WaitUtils.sleep(2);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+        return new MainPage();
+    }
+
+    public static void initFacebookOptions() {
+        LOG_STEP.info("Setup valid Facebook account in the Settings");
+        LOG_STEP.info("Press home button");
+        mainPage = IOSuiUtils.clickHomeButton();
+        mainPage.scrollToLeft();
+        settingsPage = mainPage.openSettings();
+        WaitUtils.sleep(1);
+        settingsPage.scrollTo(200);
+        settingsPage.openFacebookSettings();
     }
 }

@@ -49,10 +49,4 @@ public class SignInPage extends BasePage implements LoginPagesDataProviders, Log
         Assert.assertTrue(email.isDisplayed() && password.isDisplayed());
     }
 
-    public void initFacebookOptions() {
-        LOG_STEP.info("Setup valid Facebook account in the Settings");
-        LOG_STEP.info("Press home button");
-        IOSuiUtils.clickHomeButton();
-    }
-
 }
