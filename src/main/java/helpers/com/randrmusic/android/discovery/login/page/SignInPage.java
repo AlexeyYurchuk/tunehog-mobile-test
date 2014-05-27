@@ -20,5 +20,6 @@ public class SignInPage extends BasePage implements Loggable,SignInPageDataProvi
         WaitUtils.waitForResult(SLEEP_TIME_IN_SECONDS);
         LOG_STEP.info("User fills email field");
         emailField.sendKeys(user.getEmail());
+        LOG_STEP.info("User fills password field");
     }
 }
