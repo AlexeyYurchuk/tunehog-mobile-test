@@ -8,7 +8,9 @@ public interface SettingsPageDataProviders {
     String FacebookIcon = "Facebook";
     String FacebookUserName = "User Name";
     String FacebookPassword = "Password";
-    String FacebookSignIn = "Sign In";
+    String FacebookSignIn = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[4]";
+    String FacebookSignInApprove = "//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAButton[3]";
+    String FacebooKUserInfo = "Generic Autoqa";
 
 }
 

@@ -9,4 +9,12 @@ public interface LoginPagesDataProviders {
     String EmailSignIn = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIATextField[1]";
     String PasswordSignIn = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIASecureTextField[1]";
     String SignInButton = "SIGN IN";
+
+    String SignInFacebook = "Login with Facebook";
+    String AllowFacebookAccessToProfile = "//UIAApplication[1]/UIAWindow[4]/UIAAlert[1]/UIATableView[2]/UIATableCell[1]";
+
+    String TryItNow = "Try it now!";
+
+    String ForgotPassword = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAButton[4]";
+    //UIAApplication[1]/UIAWindow[4]/UIAAlert[1]/UIATableView[2]
 }

@@ -26,6 +26,10 @@ public class SignInPage extends BasePage implements LoginPagesDataProviders, Log
     @FindBy(how = How.NAME, using = LoginPagesDataProviders.SignInButton)
     private WebElement signinButton;
 
+    @FindBy(how = How.NAME, using = LoginPagesDataProviders.SignInFacebook)
+    private WebElement signInFacebookButton;
+    @FindBy(how = How.XPATH, using = LoginPagesDataProviders.AllowFacebookAccessToProfile)
+    private WebElement allowFacebookAccess;
 
     private void clearFields() {
         email.clear();
@@ -49,4 +53,13 @@ public class SignInPage extends BasePage implements LoginPagesDataProviders, Log
         Assert.assertTrue(email.isDisplayed() && password.isDisplayed());
     }
 
+    public ChooseSignPage signInFacebook() {
+        LOG_STEP.info("User click on 'Log with Facebook' button.");
+        signInFacebookButton.click();
+        allowFacebookAccess.click();
+        WaitUtils.waitForResult(2);
+        allowFacebookAccess.click();
+        WaitUtils.waitForResult(4);
+        return new ChooseSignPage();
+    }
 }

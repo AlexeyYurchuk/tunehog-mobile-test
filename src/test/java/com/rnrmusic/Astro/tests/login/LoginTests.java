@@ -45,9 +45,9 @@ public class LoginTests extends BaseTest implements Loggable {
     public void loginThroughFacebook() {
         LOG_TEST.info("Login with Facebook account");
         LOG_EXPECTED_RESULT.info("User is logged into the system with the Facebook account");
-        // TODO: do smth with this method: IOSuiUtils.initFacebookOptions();
-        // TODO: implemet signInPage.signInFacebook(defaultUser);
-        // signInPage = startPage.clickLogin();
+        signInPage = startPage.clickLogin();
+        signInPage.checkUnLoggedUser();
+        signInPage.signInFacebook();
         chooseSignPage.checkLoggedInUser();
         chooseSignPage.clickLogout();
     }

@@ -3,6 +3,8 @@ package com.rnrmusic.general.ios.tests.settings;
 import framework.Loggable;
 import framework.THMobileDriver;
 import helpers.BaseTest;
+import helpers.com.randrmusic.ios.system.settings.page.FacebookSettingsPage;
+import helpers.com.randrmusic.ios.system.settings.page.SettingsPage;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -13,15 +15,19 @@ import utils.WaitUtils;
  */
 public class FacebookOptionsTest extends BaseTest implements Loggable {
 
+    private SettingsPage settingsPage;
+    private FacebookSettingsPage facebookSettingsPage;
+
     @BeforeTest
     public void setUpApplication() {
         System.setProperty("test.AppName","settings");
         System.setProperty("test.AppPathName", "");
+        settingsPage = new SettingsPage();
     }
 
     @AfterTest
     public void tearDownApplication() {
-        WaitUtils.waitForResult(3);
+        WaitUtils.waitForResult(2);
         System.setProperty("test.AppName", null);
         System.setProperty("test.AppPathName", null);
         THMobileDriver.getInstance().terminate();
@@ -30,7 +36,11 @@ public class FacebookOptionsTest extends BaseTest implements Loggable {
     @Test()
     public void initFacebookOptions() {
         LOG_TEST.info("Setup valid Facebook account in the Settings");
-        LOG_STEP.info("good");
+        //settingsPage.scrollTo(200);
+        settingsPage.scrollDown();
+        facebookSettingsPage = settingsPage.openFacebookSettings();
+        facebookSettingsPage.signIn(defaultUser);
+        facebookSettingsPage.checkLoggedInUser();
         WaitUtils.sleep(3);
     }
 

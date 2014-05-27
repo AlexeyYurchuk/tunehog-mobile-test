@@ -45,14 +45,4 @@ public class IOSuiUtils implements Loggable{
         return new MainPage();
     }
 
-    public static void initFacebookOptions() {
-        LOG_STEP.info("Setup valid Facebook account in the Settings");
-        LOG_STEP.info("Press home button");
-        mainPage = IOSuiUtils.clickHomeButton();
-        mainPage.scrollToLeft();
-        settingsPage = mainPage.openSettings();
-        WaitUtils.sleep(1);
-        settingsPage.scrollTo(200);
-        settingsPage.openFacebookSettings();
-    }
 }
