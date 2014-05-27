@@ -25,10 +25,12 @@ public class THMobileDriver implements Loggable {
 
     private static final String DEFAULT_APP = "Astro.app";
     private static final String DEFAULT_APP_PATH = "/Users/admin/a.tykhonov/wti-astro-ios/Astro/build/Products/Debug-iphonesimulator";
+    private static final String DEFAULT_DEVICE = "iPhone Simulator";
 
     // Platform variables
     private String platformName;
     private String platformVersion;
+    private String deviceName;
     private String appName;
     private String appPathName;
     private File appDir;
@@ -56,9 +58,10 @@ public class THMobileDriver implements Loggable {
     }
 
     public void initProperties() {
-        if ( System.getProperty("test.platformName") == null) {
+        if ( System.getProperty("test.platformName") == null || System.getProperty("test.deviceName") == null) {
             System.setProperty("test.platformName", IOS);
             System.setProperty("test.platformVersion", V7_1);
+            System.setProperty("test.deviceName", DEFAULT_DEVICE);
         }
 
         if (System.getProperty("test.AppName") == null || System.getProperty("test.AppPathName") == null ) {
@@ -80,7 +83,7 @@ public class THMobileDriver implements Loggable {
 
         platformName = System.getProperty("test.platformName");
         platformVersion = System.getProperty("test.platformVersion");
-
+        deviceName = System.getProperty("test.deviceName");
     }
 
     public AppiumDriver initDriver() {
@@ -89,18 +92,17 @@ public class THMobileDriver implements Loggable {
 
         initProperties();
 
-        LOG_ENVIRONMENT.info("Platform Name: " + platformName + ", Platform Version: " + platformVersion + " Full App Name: " + fullAppName);
+        LOG_ENVIRONMENT.info("Platform Name: " + platformName + ", Platform Version: " + platformVersion + " Full App Name: " + fullAppName
+                + " Device name: " + deviceName);
 
         driver = null;
         urlString = APPIUM_DEFAULT_URI;
 
-        if (platformName.equals(IOS)) {
-            capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
-            capabilities.setCapability("platformVersion", platformVersion);
-            capabilities.setCapability("platformName", platformName);
-            capabilities.setCapability("deviceName", "iPhone Simulator");
-            capabilities.setCapability("app", fullAppName);
-        }
+        capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
+        capabilities.setCapability("platformVersion", platformVersion);
+        capabilities.setCapability("platformName", platformName);
+        capabilities.setCapability("deviceName", deviceName);
+        capabilities.setCapability("app", fullAppName);
         try {
             driver = new AppiumDriver(new URL(urlString), capabilities);
         } catch (MalformedURLException e) {
