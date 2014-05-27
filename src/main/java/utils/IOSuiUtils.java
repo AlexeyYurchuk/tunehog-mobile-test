@@ -18,7 +18,7 @@ public class IOSuiUtils implements Loggable{
     private static MainPage mainPage;
     private static SettingsPage settingsPage;
 
-    public static MainPage clickHomeButton() {
+   public static MainPage clickHomeButton() {
         try {
             WaitUtils.sleep(1);
             Robot robot = new Robot();
@@ -44,5 +44,6 @@ public class IOSuiUtils implements Loggable{
 
         return new MainPage();
     }
+
 
 }
