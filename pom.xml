@@ -55,9 +55,9 @@
         </profile>
 
         <profile>
-            <id>7.0</id>
+            <id>7.1</id>
             <properties>
-                <platformVersion>7.0</platformVersion>
+                <platformVersion>7.1</platformVersion>
             </properties>
 
         </profile>
