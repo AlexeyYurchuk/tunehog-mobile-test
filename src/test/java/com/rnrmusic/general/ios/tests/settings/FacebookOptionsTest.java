@@ -15,8 +15,8 @@ public class FacebookOptionsTest extends BaseTest implements Loggable {
 
     @BeforeTest
     public void setUpApplication() {
-        System.setProperty("test.AppName","TestApp.app");
-        System.setProperty("test.AppPathName", "/Users/admin/a.tykhonov/appium/sample-code/apps/TestApp/build/Release-iphonesimulator");
+        System.setProperty("test.AppName","settings");
+        System.setProperty("test.AppPathName", "");
     }
 
     @AfterTest

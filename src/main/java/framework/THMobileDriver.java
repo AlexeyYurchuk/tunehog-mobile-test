@@ -31,7 +31,9 @@ public class THMobileDriver implements Loggable {
     private String platformVersion;
     private String appName;
     private String appPathName;
-
+    private File appDir;
+    private File app;
+    private String fullAppName;
 
     private THMobileDriver() {
         initProperties();
@@ -64,10 +66,21 @@ public class THMobileDriver implements Loggable {
             System.setProperty("test.AppPathName",DEFAULT_APP_PATH);
         }
 
+
         appPathName = System.getProperty("test.AppPathName");
         appName = System.getProperty("test.AppName");
+        appDir = new File(appPathName);
+        app = new File(appDir, appName);
+
+        if (appPathName.equals("")) {
+            fullAppName = appName;
+        } else {
+            fullAppName = app.getAbsolutePath();
+        }
+
         platformName = System.getProperty("test.platformName");
         platformVersion = System.getProperty("test.platformVersion");
+
     }
 
     public AppiumDriver initDriver() {
@@ -76,22 +89,18 @@ public class THMobileDriver implements Loggable {
 
         initProperties();
 
-        LOG_ENVIRONMENT.info("Platform Name: " + platformName + ", Platform Version: " + platformVersion);
+        LOG_ENVIRONMENT.info("Platform Name: " + platformName + ", Platform Version: " + platformVersion + " Full App Name: " + fullAppName);
 
         driver = null;
-
         urlString = APPIUM_DEFAULT_URI;
 
         if (platformName.equals(IOS)) {
-            File appDir = new File(appPathName);
-            File app = new File(appDir, appName);
             capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
             capabilities.setCapability("platformVersion", platformVersion);
             capabilities.setCapability("platformName", platformName);
             capabilities.setCapability("deviceName", "iPhone Simulator");
-            capabilities.setCapability("app", app.getAbsolutePath());
+            capabilities.setCapability("app", fullAppName);
         }
-
         try {
             driver = new AppiumDriver(new URL(urlString), capabilities);
         } catch (MalformedURLException e) {
