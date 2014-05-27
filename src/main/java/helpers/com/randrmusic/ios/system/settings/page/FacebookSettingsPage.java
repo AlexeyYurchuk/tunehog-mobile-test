@@ -28,12 +28,14 @@ public class FacebookSettingsPage extends BasePage implements Loggable, Settings
 
     public void signIn(UserObject user) {
         LOG_STEP.info("User fills email field");
+        //TODO: enter the text with hardware keybord
         facebookUserName.sendKeys(user.getEmail());
         LOG_STEP.info("User fills password field");
-        facebookPassword.sendKeys(user.getPassword());
+        facebookPassword.sendKeys(user.getPassword() + "\\n");
         LOG_STEP.info("User clicks on Sign In button");
-        WaitUtils.waitForResult(17);
+        WaitUtils.waitForResult(2);
         facebookSignIn.click();
+        WaitUtils.waitForResult(13);
         LOG_STEP.info("User approve to sign in");
         facebookSignInApprove.click();
         WaitUtils.waitForResult(5);
