@@ -61,6 +61,21 @@
             </properties>
 
         </profile>
+
+        <!-- Profiles for Android projects -->
+        <profile>
+            <id>android</id>
+            <properties>
+                <platformName>Android</platformName>
+            </properties>
+        </profile>
+        <profile>
+            <id>4.4.2</id>
+            <properties>
+                <platformVersion>4.4.2</platformVersion>
+            </properties>
+        </profile>
+
     </profiles>
 
     <dependencies>
