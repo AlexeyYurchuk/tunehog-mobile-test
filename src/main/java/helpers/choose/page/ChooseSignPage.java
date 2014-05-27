@@ -1,6 +1,5 @@
 package helpers.choose.page;
 
-import com.sun.xml.internal.bind.v2.TODO;
 import framework.Loggable;
 import helpers.BasePage;
 import helpers.choose.data.ChooseSignPageDataProviders;

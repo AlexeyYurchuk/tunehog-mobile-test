@@ -36,7 +36,6 @@ public class FacebookOptionsTest extends BaseTest implements Loggable {
     @Test()
     public void initFacebookOptions() {
         LOG_TEST.info("Setup valid Facebook account in the Settings");
-        //settingsPage.scrollTo(200);
         settingsPage.scrollDown();
         facebookSettingsPage = settingsPage.openFacebookSettings();
         facebookSettingsPage.signIn(defaultUser);

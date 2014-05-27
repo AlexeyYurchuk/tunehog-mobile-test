@@ -7,6 +7,11 @@
     <artifactId>tunehog-mobile-test</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
+    <properties>
+        <platformName>iOS</platformName>
+        <platformVersion>7.1</platformVersion>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -15,6 +20,16 @@
                 <version>2.16</version>
                 <configuration>
                     <redirectTestOutputToFile>true</redirectTestOutputToFile>
+                    <systemProperties>
+                        <property>
+                            <name>test.platformName</name>
+                            <value>${platformName}</value>
+                        </property>
+                        <property>
+                            <name>test.platformVersion</name>
+                            <value>${platformVersion}</value>
+                        </property>
+                    </systemProperties>
                     <properties>
                         <property>
                             <name>usedefaultlisteners</name>
@@ -31,11 +46,28 @@
         </plugins>
     </build>
 
+    <profiles>
+        <profile>
+            <id>ios</id>
+            <properties>
+                <platformName>iOS</platformName>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>7.0</id>
+            <properties>
+                <platformVersion>7.0</platformVersion>
+            </properties>
+
+        </profile>
+    </profiles>
+
     <dependencies>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>6.8.5</version>
+            <version>6.8.8</version>
         </dependency>
         <dependency>
             <groupId>org.uncommons</groupId>

@@ -84,14 +84,4 @@ public class BasePage {
         jsExecuteWithOption("mobile: scroll", swipeObject);
     }
 
-    public void scrollTo(int pixels) {
-        String execute = "";
-        if (pixels >= 0) {
-            execute = "scroll(0," + pixels + ");";
-        } else {
-            execute = "scroll(" + pixels + ",0)";
-        }
-        jsExecute(execute);
-        WaitUtils.sleep(1);
-    }
 }
