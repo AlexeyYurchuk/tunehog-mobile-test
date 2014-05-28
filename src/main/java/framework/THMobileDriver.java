@@ -20,6 +20,7 @@ public class THMobileDriver implements Loggable {
 
     //constants
     private static final String IOS = "iOS";
+    private static final String ANDROID = "Android";
     private static final String APPIUM_DEFAULT_URI = "http://127.0.0.1:4723/wd/hub";
     private static final String V7_1 = "7.1";
 
@@ -103,6 +104,10 @@ public class THMobileDriver implements Loggable {
         capabilities.setCapability("platformName", platformName);
         capabilities.setCapability("deviceName", deviceName);
         capabilities.setCapability("app", fullAppName);
+        if (platformName.equals(ANDROID)) {
+            capabilities.setCapability("appPackage", "com.rnrmusic.radio");
+            //capabilities.setCapability("appActivity", ".ApiDemos");
+        }
         try {
             driver = new AppiumDriver(new URL(urlString), capabilities);
         } catch (MalformedURLException e) {
