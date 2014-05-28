@@ -14,6 +14,8 @@ public class BaseDiscoveryTest extends BaseTest implements Loggable {
         System.setProperty("test.AppName","com.rnrmusic.radio.apk");
         System.setProperty("test.AppPathName", "D:\\discoveryAndroid");
         System.setProperty("test.deviceName", "192.168.56.101:5555");
+        System.setProperty("test.appActivity", ".activities.WelcomeActivity");
+        System.setProperty("test.appPackage", "com.rnrmusic.radio");
     }
 
     @AfterTest
