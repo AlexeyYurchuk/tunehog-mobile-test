@@ -1,6 +1,7 @@
 package com.randrmusic.ios.astro.tests;
 
 import framework.Loggable;
+import framework.THMobileDriver;
 import helpers.BaseTest;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -21,6 +22,7 @@ public class AstroBaseTest extends BaseTest implements Loggable {
     @AfterTest
     public void tearDownApplication() {
         WaitUtils.waitForResult(2);
+        THMobileDriver.getInstance().terminate();
     }
 
 }
