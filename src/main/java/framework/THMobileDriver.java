@@ -106,7 +106,7 @@ public class THMobileDriver implements Loggable {
         capabilities.setCapability("app", fullAppName);
         if (platformName.equals(ANDROID)) {
             capabilities.setCapability("appPackage", "com.rnrmusic.radio");
-            capabilities.setCapability("appActivity", ".RadioApplication");
+            capabilities.setCapability("appActivity", ".activities.WelcomeActivity");
         }
         try {
             driver = new AppiumDriver(new URL(urlString), capabilities);
