@@ -20,6 +20,7 @@ public class THMobileDriver implements Loggable {
 
     //constants
     private static final String IOS = "iOS";
+    private static final String ANDROID = "Android";
     private static final String APPIUM_DEFAULT_URI = "http://127.0.0.1:4723/wd/hub";
     private static final String V7_1 = "7.1";
 
@@ -31,6 +32,8 @@ public class THMobileDriver implements Loggable {
     private String platformName;
     private String platformVersion;
     private String deviceName;
+    private String appPackage;
+    private String appActivity;
     private String appName;
     private String appPathName;
     private File appDir;
@@ -84,6 +87,8 @@ public class THMobileDriver implements Loggable {
         platformName = System.getProperty("test.platformName");
         platformVersion = System.getProperty("test.platformVersion");
         deviceName = System.getProperty("test.deviceName");
+        appPackage = System.getProperty("test.appPackage");
+        appActivity = System.getProperty("test.appActivity");
     }
 
     public AppiumDriver initDriver() {
@@ -103,6 +108,11 @@ public class THMobileDriver implements Loggable {
         capabilities.setCapability("platformName", platformName);
         capabilities.setCapability("deviceName", deviceName);
         capabilities.setCapability("app", fullAppName);
+
+        if (platformName.equals(ANDROID)) {
+            capabilities.setCapability("appPackage", appPackage);
+            capabilities.setCapability("appActivity", appActivity);
+        }
         try {
             driver = new AppiumDriver(new URL(urlString), capabilities);
         } catch (MalformedURLException e) {

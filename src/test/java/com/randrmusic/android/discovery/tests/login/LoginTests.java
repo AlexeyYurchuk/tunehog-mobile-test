@@ -5,6 +5,7 @@ import framework.Loggable;
 import helpers.com.randrmusic.android.discovery.login.page.SignInPage;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import utils.WaitUtils;
 
 public class LoginTests extends BaseDiscoveryTest implements Loggable {
 
@@ -22,6 +23,7 @@ public class LoginTests extends BaseDiscoveryTest implements Loggable {
         LOG_TEST.info("Login and Logout test");
         LOG_EXPECTED_RESULT.info("User logs into the system, then log out");
         // signInPage.checkUnLoggedUser();
+        WaitUtils.waitForResult(3);
         signInPage.signIn(defaultUser);
         // TODO: implement other steps
     }
