@@ -39,6 +39,7 @@ public class FacebookOptionsTest extends BaseTest implements Loggable {
         settingsPage.scrollDown();
         facebookSettingsPage = settingsPage.openFacebookSettings();
         facebookSettingsPage.signIn(defaultUser);
+        WaitUtils.sleep(10);
         facebookSettingsPage.checkLoggedInUser();
         WaitUtils.sleep(3);
     }
