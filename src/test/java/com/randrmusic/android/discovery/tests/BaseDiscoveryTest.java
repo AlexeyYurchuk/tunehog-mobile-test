@@ -1,5 +1,6 @@
 package com.randrmusic.android.discovery.tests;
 
+import framework.DataStore;
 import framework.Loggable;
 import framework.THMobileDriver;
 import helpers.BaseTest;
@@ -7,15 +8,20 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import utils.WaitUtils;
 
+import java.util.Properties;
+
 public class BaseDiscoveryTest extends BaseTest implements Loggable {
+
+    private Properties properties;
 
     @BeforeTest
     public void setUpApplication() {
-        System.setProperty("test.AppName","com.rnrmusic.radio.apk");
-        System.setProperty("test.AppPathName", "D:\\discoveryAndroid");
-        System.setProperty("test.deviceName", "192.168.56.101:5555");
-        System.setProperty("test.appActivity", ".activities.WelcomeActivity");
-        System.setProperty("test.appPackage", "com.rnrmusic.radio");
+        properties = DataStore.getInstance().getProperties();
+        System.setProperty("test.AppName", properties.getProperty("android.discovery.appName"));
+        System.setProperty("test.AppPathName", properties.getProperty("android.discovery.appPathName"));
+        System.setProperty("test.deviceName", properties.getProperty("android.discovery.deviceName"));
+        System.setProperty("test.appActivity", properties.getProperty("android.discovery.appActivity"));
+        System.setProperty("test.appPackage", properties.getProperty("android.discovery.appPackage"));
     }
 
     @AfterTest
