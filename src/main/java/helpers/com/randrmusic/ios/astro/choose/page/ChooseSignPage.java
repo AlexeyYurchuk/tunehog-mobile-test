@@ -19,7 +19,7 @@ public class ChooseSignPage extends BasePage implements ChooseSignPageDataProvid
 
     public void checkLoggedInUser() {
         WaitUtils.waitForResult(3);
-        Assert.assertTrue(false,"Be a man - create a real method!"); //TODO: should be change to real action
+        Assert.assertTrue(false,"ChooseSign page is not implemented yet."); //TODO: should be change to real action
     }
 
     public void clickLogout() {
