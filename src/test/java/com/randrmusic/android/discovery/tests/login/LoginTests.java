@@ -25,7 +25,7 @@ public class LoginTests extends BaseDiscoveryTest implements Loggable {
         LOG_PRECONDITIONS.info("Android 4.4.2");
         LOG_TEST.info("Login and Logout test");
         LOG_EXPECTED_RESULT.info("User logs into the system, then log out");
-        WaitUtils.waitForResult(1);
+        WaitUtils.waitForResult(3);
         signInPage.checkUnLoggedUser();
         signInPage.signIn(defaultUser);
        // menuPage.checkLoggedUser();
