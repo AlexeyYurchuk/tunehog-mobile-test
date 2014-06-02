@@ -20,7 +20,7 @@ public class UserObject {
         properties = DataStore.getInstance().getProperties();
         setEmail(properties.getProperty("emailArtemT"));
         setPassword(properties.getProperty("passwordArtemT"));
-        setUsername(properties.getProperty("username"));
+        setUsername(properties.getProperty("usernameArtemT"));
     }
 
     public String getEmail() {

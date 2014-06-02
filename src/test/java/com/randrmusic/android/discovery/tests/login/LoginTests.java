@@ -2,6 +2,7 @@ package com.randrmusic.android.discovery.tests.login;
 
 import com.randrmusic.android.discovery.tests.BaseDiscoveryTest;
 import framework.Loggable;
+import helpers.com.randrmusic.android.discovery.discovery.page.DiscoveryPage;
 import helpers.com.randrmusic.android.discovery.login.page.SignInPage;
 import helpers.com.randrmusic.android.discovery.menu.page.MenuPage;
 import org.testng.annotations.BeforeMethod;
@@ -12,6 +13,7 @@ public class LoginTests extends BaseDiscoveryTest implements Loggable {
 
     private SignInPage signInPage;
     private MenuPage menuPage;
+    private DiscoveryPage discoveryPage;
 
     @BeforeMethod
     public void setUp() {
@@ -27,9 +29,14 @@ public class LoginTests extends BaseDiscoveryTest implements Loggable {
         LOG_EXPECTED_RESULT.info("User logs into the system, then log out");
         WaitUtils.waitForResult(3);
         signInPage.checkUnLoggedUser();
-        signInPage.signIn(defaultUser);
-       // menuPage.checkLoggedUser();
-       // menuPage.clickLogout();
-       // signInPage.checkUnLoggedUser();
+        discoveryPage = signInPage.signIn(defaultUser);
+        discoveryPage.back();
+        menuPage = discoveryPage.clickHome();
+        menuPage.checkLoggedUser(defaultUser);
+        // TODO: Emulator fails on logout. Investigate why and uncomment the following steps
+        /*
+        menuPage.scrollDownAndroid();
+        menuPage.clickLogout();
+        signInPage.checkUnLoggedUser();*/
     }
 }

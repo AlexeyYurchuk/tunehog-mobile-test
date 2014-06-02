@@ -3,6 +3,7 @@ package helpers.com.randrmusic.android.discovery.login.page;
 import framework.Loggable;
 import framework.dataobjects.UserObject;
 import helpers.BasePage;
+import helpers.com.randrmusic.android.discovery.discovery.page.DiscoveryPage;
 import helpers.com.randrmusic.android.discovery.login.data.SignInPageDataProviders;
 import helpers.com.randrmusic.android.discovery.menu.page.MenuPage;
 import org.openqa.selenium.WebElement;
@@ -22,7 +23,7 @@ public class SignInPage extends BasePage implements Loggable,SignInPageDataProvi
     @FindBy(how = How.ID, using = SignInPageDataProviders.signInButton)
     private WebElement signInButton;
 
-    public MenuPage signIn(UserObject user) {
+    public DiscoveryPage signIn(UserObject user) {
         WaitUtils.waitForResult(SLEEP_TIME_IN_SECONDS);
         LOG_STEP.info("User fills email field");
         emailField.sendKeys(user.getEmail());
@@ -30,11 +31,12 @@ public class SignInPage extends BasePage implements Loggable,SignInPageDataProvi
         passwordField.sendKeys(user.getPassword());
         LOG_STEP.info("User clicks 'Login' button");
         signInButton.click();
-        WaitUtils.sleep(3);
-        return new MenuPage();
+        WaitUtils.waitForResult(5);
+        return new DiscoveryPage();
     }
 
     public void checkUnLoggedUser() {
+        WaitUtils.sleep(1);
         LOG_STEP.info("System verifies if user is no logged");
         Assert.assertTrue(emailField.isDisplayed() && passwordField.isDisplayed());
     }

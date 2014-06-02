@@ -38,6 +38,11 @@ public class BasePage {
         ((JavascriptExecutor) driver).executeScript(s, swipeObject);
     }
 
+    public void jsExecuteWithDouble( String s, HashMap<String, Double> swipeObject) {
+        WaitUtils.sleep(1);
+        ((JavascriptExecutor) driver).executeScript(s, swipeObject);
+    }
+
     public void swipeToLeft() {
         WaitUtils.sleep(2);
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -84,4 +89,18 @@ public class BasePage {
         jsExecuteWithOption("mobile: scroll", swipeObject);
     }
 
+    public void scrollDownAndroid() {
+        HashMap<String, Double> swipeObject = new HashMap<String, Double>();
+        swipeObject.put("startX", 0.5);
+        swipeObject.put("startY", 0.7);
+        swipeObject.put("endX", 0.5);
+        swipeObject.put("endY", 0.4);
+        swipeObject.put("duration", 2.0);
+        jsExecuteWithDouble("mobile: swipe", swipeObject);
+    }
+
+    public void back() {
+        WaitUtils.sleep(1);
+        driver.navigate().back();
+    }
 }
