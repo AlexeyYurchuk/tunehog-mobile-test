@@ -33,7 +33,10 @@ public class BaseTest implements Loggable {
     @AfterClass
     public void genericTearDown() throws InterruptedException {
         WaitUtils.waitForResult(3);
-        THMobileDriver.getInstance().terminate();
+        /**
+        if (driver != null) {
+            THMobileDriver.getInstance().terminate();
+        }**/
     }
 
     @AfterMethod(alwaysRun = true)

@@ -2,9 +2,11 @@ package com.randrmusic.android.discovery.tests.login;
 
 import com.randrmusic.android.discovery.tests.BaseDiscoveryTest;
 import framework.Loggable;
+import framework.THMobileDriver;
 import helpers.com.randrmusic.android.discovery.discovery.page.DiscoveryPage;
 import helpers.com.randrmusic.android.discovery.login.page.SignInPage;
 import helpers.com.randrmusic.android.discovery.menu.page.MenuPage;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import utils.WaitUtils;
@@ -21,7 +23,14 @@ public class LoginTests extends BaseDiscoveryTest implements Loggable {
 
     }
 
-    @Test
+    @AfterMethod
+    public void tearDown() {
+        WaitUtils.waitForResult(1);
+        THMobileDriver.getInstance().terminate();
+    }
+
+
+    @Test(priority = 1, enabled = false)
     public void signInSignOutTest() {
         LOG_TEST_SUITE.info("Login Tests");
         LOG_PRECONDITIONS.info("Android 4.4.2");
@@ -38,5 +47,15 @@ public class LoginTests extends BaseDiscoveryTest implements Loggable {
         menuPage.scrollDownAndroid();
         menuPage.clickLogout();
         signInPage.checkUnLoggedUser();*/
+    }
+
+    @Test(priority = 2)
+    public void negativeTestSignIn() {
+        LOG_TEST.info("Login with wrong credentials");
+        LOG_EXPECTED_RESULT.info("User failed to log into the system using invalid credentials");
+        WaitUtils.waitForResult(3);
+        signInPage.checkUnLoggedUser();
+        signInPage.invalidEmailOrPassword(defaultUser);
+        signInPage.checkUnLoggedUser();
     }
 }
