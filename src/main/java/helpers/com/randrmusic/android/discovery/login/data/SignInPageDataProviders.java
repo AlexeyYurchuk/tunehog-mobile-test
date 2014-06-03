@@ -6,5 +6,5 @@ public interface SignInPageDataProviders {
     String passwordField = "com.rnrmusic.radio:id/editTextPasswd";
     String signInButton = "com.rnrmusic.radio:id/btnSignIn";
     String logInFacebookButton = "com.rnrmusic.radio:id/btnSignInFacebook";
-
+    String signUpButton = "com.rnrmusic.radio:id/loginSignUp";
 }

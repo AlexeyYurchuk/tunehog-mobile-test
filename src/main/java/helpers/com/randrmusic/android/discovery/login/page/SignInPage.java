@@ -6,6 +6,7 @@ import helpers.BasePage;
 import helpers.com.randrmusic.android.discovery.discovery.page.DiscoveryPage;
 import helpers.com.randrmusic.android.discovery.login.data.SignInPageDataProviders;
 import helpers.com.randrmusic.android.discovery.menu.page.MenuPage;
+import helpers.com.randrmusic.android.discovery.signup.page.SignUpPage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -24,6 +25,8 @@ public class SignInPage extends BasePage implements Loggable,SignInPageDataProvi
     private WebElement passwordField;
     @FindBy(how = How.ID, using = SignInPageDataProviders.signInButton)
     private WebElement signInButton;
+    @FindBy(how = How.ID, using = SignInPageDataProviders.signUpButton)
+    private WebElement signUpButton;
 
     public DiscoveryPage signIn(UserObject user) {
         WaitUtils.waitForResult(SLEEP_TIME_IN_SECONDS);
@@ -52,5 +55,11 @@ public class SignInPage extends BasePage implements Loggable,SignInPageDataProvi
         LOG_STEP.info("User clicks 'Login' button");
         signInButton.click();
         WaitUtils.waitForResult(3);
+    }
+
+    public SignUpPage clickSignUp() {
+        LOG_STEP.info("User clicks 'SignUp' button on Tiles page");
+        signUpButton.click();
+        return new SignUpPage();
     }
 }
