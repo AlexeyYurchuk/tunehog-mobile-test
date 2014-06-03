@@ -35,7 +35,7 @@ public class LoginTests extends BaseDiscoveryTest implements Loggable {
     }
 
 
-    @Test(priority = 1, enabled = false)
+    @Test(priority = 1)
     public void signInSignOutTest() {
         LOG_TEST_SUITE.info("Login Tests");
         LOG_PRECONDITIONS.info("Android 4.4.2");
@@ -53,7 +53,7 @@ public class LoginTests extends BaseDiscoveryTest implements Loggable {
         signInPage.checkUnLoggedUser();*/
     }
 
-    @Test(priority = 2, enabled = false)
+    @Test(priority = 2)
     public void negativeTestSignIn() {
         LOG_TEST.info("Login with wrong credentials");
         LOG_EXPECTED_RESULT.info("User failed to log into the system using invalid credentials");
@@ -72,5 +72,10 @@ public class LoginTests extends BaseDiscoveryTest implements Loggable {
         discoveryPage.back();
         menuPage = discoveryPage.clickHome();
         menuPage.checkLoggedUser(user);
+    }
+
+    @Test(priority = 4, enabled = false)
+    public void restorePasswordTest() {
+
     }
 }
