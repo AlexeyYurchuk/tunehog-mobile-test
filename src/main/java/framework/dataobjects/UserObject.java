@@ -14,7 +14,7 @@ public class UserObject {
     private String email;
     private String username;
     private String password;
-
+    private String passwordEmail;
 
     public void setFromProperties() {
         properties = DataStore.getInstance().getProperties();
@@ -45,5 +45,21 @@ public class UserObject {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPasswordEmail() {
+        return passwordEmail;
+    }
+
+    public void setPasswordEmail(String passwordEmail) {
+        this.passwordEmail = passwordEmail;
+    }
+
+    public void setFromPropertiesAccount() {
+        properties = DataStore.getInstance().getProperties();
+        setEmail(properties.getProperty("user_account"));
+        setUsername(properties.getProperty("username_account"));
+        setPassword(properties.getProperty("password_account"));
+        setPasswordEmail(properties.getProperty("password_email_account"));
     }
 }

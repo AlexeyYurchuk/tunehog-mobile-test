@@ -8,6 +8,7 @@ import framework.dataobjects.UserObject;
 import helpers.com.randrmusic.android.discovery.discovery.page.DiscoveryPage;
 import helpers.com.randrmusic.android.discovery.login.page.SignInPage;
 import helpers.com.randrmusic.android.discovery.menu.page.MenuPage;
+import helpers.com.randrmusic.android.discovery.restore.page.RestorePassPage;
 import helpers.com.randrmusic.android.discovery.signup.page.SignUpPage;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -20,6 +21,7 @@ public class LoginTests extends BaseDiscoveryTest implements Loggable {
     private MenuPage menuPage;
     private DiscoveryPage discoveryPage;
     private SignUpPage signUpPage;
+    private RestorePassPage restorePassPage;
 
     @BeforeMethod
     public void setUp() {
@@ -77,8 +79,13 @@ public class LoginTests extends BaseDiscoveryTest implements Loggable {
         menuPage.checkLoggedUser(user);
     }
 
-    @Test(priority = 4, enabled = false)
+    @Test(priority = 4)
     public void restorePasswordTest() {
-
+        LOG_TEST.info("Restore forgotten password");
+        LOG_EXPECTED_RESULT.info("User restored forgotten password");
+        WaitUtils.waitForResult(3);
+        signInPage.checkUnLoggedUser();
+        restorePassPage = signInPage.clickRestorePass();
+        restorePassPage.clickRestore(accountUser);
     }
 }

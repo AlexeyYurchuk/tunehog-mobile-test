@@ -22,12 +22,15 @@ public class BaseTest implements Loggable {
 
     private AppiumDriver driver;
     protected UserObject defaultUser;
+    protected UserObject accountUser;
 
     @BeforeClass
     public void genericSetUp() {
         driver = THMobileDriver.getInstance().getDriver();
         defaultUser = new UserObject();
         defaultUser.setFromProperties();
+        accountUser = new UserObject();
+        accountUser.setFromPropertiesAccount();
     }
 
     @AfterClass

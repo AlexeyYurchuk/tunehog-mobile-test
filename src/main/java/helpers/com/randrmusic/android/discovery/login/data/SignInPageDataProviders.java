@@ -7,4 +7,5 @@ public interface SignInPageDataProviders {
     String signInButton = "com.rnrmusic.radio:id/btnSignIn";
     String logInFacebookButton = "com.rnrmusic.radio:id/btnSignInFacebook";
     String signUpButton = "com.rnrmusic.radio:id/loginSignUp";
+    String restoreButton = "com.rnrmusic.radio:id/loginForgotPassword";
 }

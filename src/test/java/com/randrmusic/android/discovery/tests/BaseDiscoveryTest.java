@@ -22,6 +22,7 @@ public class BaseDiscoveryTest extends BaseTest implements Loggable {
         System.setProperty("test.deviceName", properties.getProperty("android.discovery.deviceName"));
         System.setProperty("test.appActivity", properties.getProperty("android.discovery.appActivity"));
         System.setProperty("test.appPackage", properties.getProperty("android.discovery.appPackage"));
+        System.setProperty("test.environment","android");
     }
 
     @AfterTest

@@ -21,8 +21,10 @@ public class THMobileDriver implements Loggable {
     //constants
     private static final String IOS = "iOS";
     private static final String ANDROID = "Android";
+    private static final String ANDROID_DEVICE = "192.168.56.101:5555";
     private static final String APPIUM_DEFAULT_URI = "http://127.0.0.1:4723/wd/hub";
     private static final String V7_1 = "7.1";
+    private static final String ANDROID_VERSION = "4.4.2";
 
     private static final String DEFAULT_APP = "Astro.app";
     private static final String DEFAULT_APP_PATH = "/Users/admin/a.tykhonov/wti-astro-ios/Astro/build/Products/Debug-iphonesimulator";
@@ -61,10 +63,16 @@ public class THMobileDriver implements Loggable {
     }
 
     public void initProperties() {
-        if ( System.getProperty("test.platformName") == null || System.getProperty("test.deviceName") == null) {
+        if ( System.getProperty("test.platformName") == null ) {
             System.setProperty("test.platformName", IOS);
             System.setProperty("test.platformVersion", V7_1);
             System.setProperty("test.deviceName", DEFAULT_DEVICE);
+        }
+
+        if ( System.getProperty("test.environment") == "android" && System.getProperty("test.platformNam") != ANDROID ) {
+            System.setProperty("test.platformName", ANDROID);
+            System.setProperty("test.platformVersion", ANDROID_VERSION);
+            System.setProperty("test.deviceName", ANDROID_DEVICE);
         }
 
         if (System.getProperty("test.AppName") == null || System.getProperty("test.AppPathName") == null ) {
