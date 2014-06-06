@@ -39,7 +39,7 @@ public class SignInPage extends BasePage implements Loggable,SignInPageDataProvi
         passwordField.sendKeys(user.getPassword());
         LOG_STEP.info("User clicks 'Login' button");
         signInButton.click();
-        WaitUtils.waitForResult(5);
+        WaitUtils.waitForResult(7);
         return new DiscoveryPage();
     }
 
