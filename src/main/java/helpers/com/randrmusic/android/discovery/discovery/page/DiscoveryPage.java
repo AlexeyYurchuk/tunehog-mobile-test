@@ -15,7 +15,7 @@ public class DiscoveryPage extends BasePage implements DiscoveryPageDataProvider
     private WebElement homeButton;
 
     public MenuPage clickHome() {
-        WaitUtils.sleep(1);
+        WaitUtils.sleep(2);
         LOG_STEP.info("User clicks on Home icon to open menu activity");
         homeButton.click();
         return new MenuPage();

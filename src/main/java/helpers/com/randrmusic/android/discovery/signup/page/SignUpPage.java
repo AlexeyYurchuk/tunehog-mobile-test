@@ -30,7 +30,7 @@ public class SignUpPage extends BasePage implements SignUpPageDataProviders, Log
         confirmPassField.sendKeys(user.getPassword());
         LOG_STEP.info("User clicks 'Create Account' button");
         signUpButton.click();
-        WaitUtils.waitForResult(5);
+        WaitUtils.waitForResult(7);
         return new DiscoveryPage();
     }
 }
