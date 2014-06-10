@@ -14,12 +14,14 @@ import utils.WaitUtils;
  */
 public class ChooseSignPage extends BasePage implements ChooseSignPageDataProviders, Loggable {
 
-    @FindBy(how = How.NAME, using = ChooseSignPageDataProviders.something)
-    private WebElement something;
+    @FindBy(how = How.NAME, using = ChooseSignPageDataProviders.zodiakPicker)
+    private WebElement zodiakPicker;
 
     public void checkLoggedInUser() {
         WaitUtils.waitForResult(3);
-        Assert.assertTrue(false,"ChooseSign page is not implemented yet."); //TODO: should be change to real action
+        LOG_STEP.info("System verifies if user is logged in");
+        Assert.assertTrue(zodiakPicker.isEnabled(), "Zodiak picker was not displayed"); //TODO: should be change to real action
+
     }
 
     public void clickLogout() {

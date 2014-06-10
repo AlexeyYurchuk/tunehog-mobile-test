@@ -5,5 +5,8 @@ package helpers.com.randrmusic.ios.astro.choose.data;
  */
 public interface ChooseSignPageDataProviders {
 
-    public String something = "something"; //TODO: this locator should be changed to real one
+    public String zodiakPicker = "Zodiac_wheel_sdfs_03.png";
+
+    public String piscesSign = "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[1]";
+
 }

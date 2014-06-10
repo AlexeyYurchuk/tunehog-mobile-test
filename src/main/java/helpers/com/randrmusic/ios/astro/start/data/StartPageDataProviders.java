@@ -11,4 +11,7 @@ public interface StartPageDataProviders {
     String LoginName = "Login";
     String TryNowName = "Try Now";
 
+    String LoginControllerButton = "Login view controller";
+    String ChooseSignButton = "Choose sign";
+
 }

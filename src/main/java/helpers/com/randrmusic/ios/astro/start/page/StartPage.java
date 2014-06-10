@@ -19,11 +19,14 @@ public class StartPage extends BasePage implements StartPageDataProviders, Logga
     @FindBy(how = How.NAME, using = StartPageDataProviders.TryNowName)
     private WebElement tryNowButton;
 
+    @FindBy(how = How.NAME, using = StartPageDataProviders.LoginControllerButton)
+    private WebElement loginControllerButton;
+
     public StartPage() {}
 
     public SignInPage clickLogin() {
         LOG_STEP.info("User choose 'Login' option");
-        loginButton.click();
+        loginControllerButton.click();
         return new SignInPage();
     }
 }

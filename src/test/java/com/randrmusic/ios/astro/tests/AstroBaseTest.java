@@ -28,7 +28,6 @@ public class AstroBaseTest extends BaseTest implements Loggable {
     @AfterTest
     public void tearDownApplication() {
         WaitUtils.waitForResult(2);
-        THMobileDriver.getInstance().terminate();
     }
 
 }
