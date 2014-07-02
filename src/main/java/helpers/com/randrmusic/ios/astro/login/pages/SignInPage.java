@@ -30,6 +30,9 @@ public class SignInPage extends BasePage implements LoginPagesDataProviders, Log
     @FindBy(how = How.XPATH, using = LoginPagesDataProviders.AllowFacebookAccessToProfile)
     private WebElement allowFacebookAccess;
 
+    @FindBy(how = How.XPATH, using = LoginPagesDataProviders.IncorrectCredentialsError)
+    private WebElement incorrectCredentialsError;
+
     private void clearFields() {
         email.clear();
         password.clear();
@@ -60,5 +63,11 @@ public class SignInPage extends BasePage implements LoginPagesDataProviders, Log
         allowFacebookAccess.click();
         WaitUtils.waitForResult(4);
         return new ChooseSignPage();
+    }
+
+
+    public void checkIncorrectCredentials() {
+        LOG_STEP.info("Application displays the message about incorrect credentials.");
+        Assert.assertEquals(incorrectCredentialsError.getText(), LoginPagesDataProviders.IncorrectCredentialsErrorText);
     }
 }

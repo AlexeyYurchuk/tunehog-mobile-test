@@ -54,6 +54,24 @@ public class LoginTests extends AstroBaseTest implements Loggable {
         chooseSignPage.checkLoggedInUser();
     }
 
+    @Test(priority = 2)
+    public void signInTunehogFreeUserTest() {
+        LOG_TEST.info("Login using Tunehog user without subscription");
+        LOG_EXPECTED_RESULT.info("Only subscribed users can use Astro");
+        signInPage.checkUnLoggedUser();
+        signInPage.signIn(defaultUser);
+        signInPage.checkIncorrectCredentials();
+    }
+
+    @Test(priority = 2)
+    public void signInTunehogSubscribedUserTest() {
+        LOG_TEST.info("Login using Tunehog user with subscription");
+        LOG_EXPECTED_RESULT.info("Only subscribed Astro users can use Astro");
+        signInPage.checkUnLoggedUser();
+        signInPage.signIn(tunehogNoSubscribedUser);
+        signInPage.checkIncorrectCredentials();
+    }
+
     @Test(priority = 2, enabled = false)
     public void negativeTestSignIn() {
         LOG_TEST.info("Login with wrong credentials");

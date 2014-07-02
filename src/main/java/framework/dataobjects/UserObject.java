@@ -76,4 +76,12 @@ public class UserObject {
         setUsername(properties.getProperty("astro_nosubscribed_username"));
         setPassword(properties.getProperty("astro_nosubscribed_password"));
     }
+
+    public void setFromPropertiesTunehogNoSubscribed() {
+        properties = DataStore.getInstance().getProperties();
+        setEmail(properties.getProperty("tunehog_nosubscribed_user"));
+        setUsername(properties.getProperty("tunehog_nosubscribed_username"));
+        setPassword(properties.getProperty("tunehog_nosubscribed_password"));
+    }
+
 }
