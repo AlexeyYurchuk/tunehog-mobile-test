@@ -41,9 +41,4 @@ public class AstroBaseTest extends BaseTest implements Loggable {
         System.setProperty("test.deviceName", properties.getProperty("ios.deviceName"));
     }
 
-    @AfterTest
-    public void tearDownApplication() {
-        WaitUtils.waitForResult(2);
-    }
-
 }
