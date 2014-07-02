@@ -43,6 +43,6 @@ public class FacebookLoginTests extends AstroBaseTest implements Loggable {
         signInPage.checkUnLoggedUser();
         signInPage.signInFacebook();
         chooseSignPage.checkLoggedInUser();
-        chooseSignPage.clickLogout();
+        // TODO: chooseSignPage.clickLogout();
     }
 }

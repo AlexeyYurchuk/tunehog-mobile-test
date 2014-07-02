@@ -25,6 +25,7 @@ public class LoginTests extends AstroBaseTest implements Loggable {
     public void setUp() {
         startPage = new StartPage();
         chooseSignPage = new ChooseSignPage();
+        signInPage = new SignInPage();
     }
 
     @AfterMethod
@@ -34,26 +35,22 @@ public class LoginTests extends AstroBaseTest implements Loggable {
     }
 
     @Test(priority = 1)
-    public void signInSignOutTest() {
+    public void signInAstroSubscribedUserTest() {
         LOG_TEST_SUITE.info("Login Tests");
         LOG_PRECONDITIONS.info("iphone with iOS 7.1");
         LOG_TEST.info("Login and Logout test");
         LOG_EXPECTED_RESULT.info("User logs into the system, then log out");
-        signInPage = startPage.clickLogin();
         signInPage.checkUnLoggedUser();
-        signInPage.signIn(defaultUser);
+        signInPage.signIn(astroSubscribedUser);
         chooseSignPage.checkLoggedInUser();
-        /**
-        chooseSignPage.clickLogout();
-        signInPage.checkUnLoggedUser();
-        **/
     }
 
-    @Test(priority = 2)
+    @Test(priority = 2, enabled = false)
     public void negativeTestSignIn() {
         LOG_TEST.info("Login with wrong credentials");
         LOG_EXPECTED_RESULT.info("User failed to log into the system using invalid credentials");
-        signInPage = startPage.clickLogin();
         WaitUtils.waitForResult(3);
     }
+
+
 }

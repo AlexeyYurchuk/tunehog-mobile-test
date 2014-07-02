@@ -1,5 +1,6 @@
 package helpers;
 
+import com.apple.eawt.AppEvent;
 import framework.Loggable;
 import framework.THMobileDriver;
 import framework.dataobjects.UserObject;

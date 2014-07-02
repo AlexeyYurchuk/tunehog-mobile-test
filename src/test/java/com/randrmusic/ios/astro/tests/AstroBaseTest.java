@@ -3,8 +3,11 @@ package com.randrmusic.ios.astro.tests;
 import framework.DataStore;
 import framework.Loggable;
 import framework.THMobileDriver;
+import framework.dataobjects.UserObject;
 import helpers.BaseTest;
+import org.omg.PortableInterceptor.USER_EXCEPTION;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import utils.WaitUtils;
 
@@ -16,6 +19,13 @@ import java.util.Properties;
 public class AstroBaseTest extends BaseTest implements Loggable {
 
     private Properties properties;
+    protected UserObject astroSubscribedUser;
+
+    @BeforeClass
+    public void setUpAstro() {
+        astroSubscribedUser = new UserObject();
+        astroSubscribedUser.setFromPropertiesAstroSubscribed();
+    }
 
     @BeforeTest
     public void setUpApplication() {

@@ -17,15 +17,14 @@ public class ChooseSignPage extends BasePage implements ChooseSignPageDataProvid
     @FindBy(how = How.NAME, using = ChooseSignPageDataProviders.zodiakPicker)
     private WebElement zodiakPicker;
 
+    @FindBy(how = How.XPATH, using = ChooseSignPageDataProviders.chooseSign)
+    private WebElement chooseSign;
+
     public void checkLoggedInUser() {
         WaitUtils.waitForResult(3);
         LOG_STEP.info("System verifies if user is logged in");
-        Assert.assertTrue(zodiakPicker.isEnabled(), "Zodiak picker was not displayed"); //TODO: should be change to real action
+        Assert.assertTrue(chooseSign.isEnabled(), "Zodiak picker was not displayed");
 
     }
 
-    public void clickLogout() {
-        LOG_STEP.info("User clicks on logout button");
-        // TODO: should be changed to real action
-    }
 }
