@@ -38,10 +38,19 @@ public class LoginTests extends AstroBaseTest implements Loggable {
     public void signInAstroSubscribedUserTest() {
         LOG_TEST_SUITE.info("Login Tests");
         LOG_PRECONDITIONS.info("iphone with iOS 7.1");
-        LOG_TEST.info("Login and Logout test");
-        LOG_EXPECTED_RESULT.info("User logs into the system, then log out");
+        LOG_TEST.info("Login using Astro user with subscription");
+        LOG_EXPECTED_RESULT.info("User logs into the app and can use Astro");
         signInPage.checkUnLoggedUser();
         signInPage.signIn(astroSubscribedUser);
+        chooseSignPage.checkLoggedInUser();
+    }
+
+    @Test(priority = 2)
+    public void signInAstroNoSubscribedUserTest() {
+        LOG_TEST.info("Login using Astro user without subscription");
+        LOG_EXPECTED_RESULT.info("Only subscribed users can use Astro");
+        signInPage.checkUnLoggedUser();
+        signInPage.signIn(astroNoSubscribedUser);
         chooseSignPage.checkLoggedInUser();
     }
 

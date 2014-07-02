@@ -20,11 +20,14 @@ public class AstroBaseTest extends BaseTest implements Loggable {
 
     private Properties properties;
     protected UserObject astroSubscribedUser;
+    protected UserObject astroNoSubscribedUser;
 
     @BeforeClass
     public void setUpAstro() {
         astroSubscribedUser = new UserObject();
         astroSubscribedUser.setFromPropertiesAstroSubscribed();
+        astroNoSubscribedUser = new UserObject();
+        astroNoSubscribedUser.setFromPropertiesAstroNoSubscribed();
     }
 
     @BeforeTest

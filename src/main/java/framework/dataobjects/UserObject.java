@@ -69,4 +69,11 @@ public class UserObject {
         setUsername(properties.getProperty("astro_subscribed_username"));
         setPassword(properties.getProperty("astro_subscribed_password"));
      }
+
+    public void setFromPropertiesAstroNoSubscribed() {
+        properties = DataStore.getInstance().getProperties();
+        setEmail(properties.getProperty("astro_nosubscribed_user"));
+        setUsername(properties.getProperty("astro_nosubscribed_username"));
+        setPassword(properties.getProperty("astro_nosubscribed_password"));
+    }
 }
